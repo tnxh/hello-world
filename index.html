@@ -1,44 +1,43 @@
 <html>
-<head>
-      <!-- style copied from MS website -->
-      <style>
-            p {
-                  font-family: Segoe UI,SegoeUI,Segoe WP,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
-                  font-weight: 400;
-                  text-rendering: optimizeLegibility;
-                  -webkit-font-smoothing: antialiased;
-            }
-      </style>
-</head>
-
 <body>
-<p> {placeholder text} </p>
+<form>
+  <input type="radio" name="maptype" value="bing" onclick="onClick()"> Bing Maps<br>
+  <input type="radio" name="maptype" value="google" onclick="onClick()"> Google Maps
+</form>
 
 <script src="node_modules/@microsoft/teams-js@1.4.1/dist/MicrosoftTeams.min.js"></script>
+
 <script type="text/javascript">  
 
 microsoftTeams.initialize();
-microsoftTeams.settings.setValidityState(true);
-
-/* Call to specify contentURL that is hosted. 
-This call can be made at any time the configuration page is displayed, including before or after the user selects the Save button */
-microsoftTeams.settings.setSettings({
-         entityId: "Sample configuration'",
-         contentUrl: "https://www.bing.com/maps/embed", 
-         suggestedDisplayName: "Sample configuration",
-         websiteUrl: "https://www.bing.com/maps", 
-         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html", //Optional. URL for removal settings page. 
-      });
-
-//handler for Save btn. If you have no save handler registered, the outcome will immediately and implicitly be success.
 microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
-// (required) notify that contentURL has been successfully determined. Fired on Save btn click.
-saveEvent.notifySuccess();
+
+    var radios = document.getElementsByName("maptype");
+    if (radios[0].checked) {
+       microsoftTeams.settings.setSettings({
+         entityId: "bing",
+         contentUrl: "https://www.bing.com/maps/embed",
+         suggestedDisplayName: "Bing Map",
+         websiteUrl: "https://www.bing.com/maps",
+         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html",
+      });
+    } else {
+       microsoftTeams.settings.setSettings({
+         entityId: "google",
+         contentUrl: "https://www.google.com/maps/embed",
+         suggestedDisplayName: "Google Map",
+         websiteUrl: "https://www.google.com/maps",
+         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html",
+      });
+    }
+
+    saveEvent.notifySuccess();
 });
 
-//enable Save btn
+function onClick() {
+    microsoftTeams.settings.setValidityState(true);
+}
 
 </script>
-
 </body>
 </html>
