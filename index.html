@@ -6,6 +6,13 @@
 
 <script type="text/javascript">  
 microsoftTeams.initialize();
+microsoftTeams.settings.setSettings({
+         entityId: "bing",
+         contentUrl: "https://www.bing.com/",
+         suggestedDisplayName: "bing",
+         websiteUrl: "https://www.bing.com/",
+         removeUrl: "https://www.bing.com/",
+});
 microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
     saveEvent.notifySuccess();
 });
