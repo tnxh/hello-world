@@ -20,6 +20,7 @@
 <script type="text/javascript">  
 
 microsoftTeams.initialize();
+microsoftTeams.settings.setValidityState(true);
 
 /* Call to specify contentURL that is hosted. 
 This call can be made at any time the configuration page is displayed, including before or after the user selects the Save button */
@@ -38,7 +39,7 @@ saveEvent.notifySuccess();
 });
 
 //enable Save btn
-microsoftTeams.settings.setValidityState(true);
+
 </script>
 
 </body>
