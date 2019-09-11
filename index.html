@@ -1,18 +1,45 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>my-first-website</title>
-  <LINK href="styles.css" rel="stylesheet" type="text/css">
+      <!-- style copied from MS website -->
+      <style>
+            p {
+                  font-family: Segoe UI,SegoeUI,Segoe WP,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+                  font-weight: 400;
+                  text-rendering: optimizeLegibility;
+                  -webkit-font-smoothing: antialiased;
+            }
+      </style>
 </head>
 
 <body>
+<p> {placeholder text} </p>
 
-<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
+<!-- <script src="node_modules/@microsoft/teams-js@1.4.1/dist/MicrosoftTeams.min.js"></script> -->
 
-<!-- Change this code here by copy and pasting your template on line 15 -->
-<p>Welcome to your first GitHub Pages website!</p>
+<script type="text/javascript">  
+
+microsoftTeams.initialize();
+
+/* Call to specify contentURL that is hosted. 
+This call can be made at any time the configuration page is displayed, including before or after the user selects the Save button */
+microsoftTeams.settings.setSettings({
+         entityId: "Sample configuration'",
+         contentUrl: "https://www.bing.com/maps/embed", 
+         suggestedDisplayName: "Sample configuration",
+         websiteUrl: "https://www.bing.com/maps", 
+         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html", //Optional. URL for removal settings page. 
+      });
+
+//handler for Save btn. If you have no save handler registered, the outcome will immediately and implicitly be success.
+microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
+// (required) notify that contentURL has been successfully determined. Fired on Save btn click.
+saveEvent.notifySuccess();
+});
+
+//enable Save btn
+microsoftTeams.settings.setValidityState(true);
+</script>
 
 </body>
 </html>
