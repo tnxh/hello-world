@@ -1,7 +1,6 @@
-<!-- Simple configuration page for Team tab in MS Teams -->
 <html>
 <body>
-  <p>Click Save to finish adding Sample Config tab </p>
+  <p>Click Save to finish adding Navigator </p>
 
 <!-- MS Teams JavaScript Client SDK -->
 <script src="https://unpkg.com/@microsoft/teams-js@1.3.4/dist/MicrosoftTeams.min.js" integrity="sha384-3zTjxw3msc6gKx3DseSU0lfRM129YrFjr2xgocfMIN/kBCdzJ88d+FSB1n3scUku" crossorigin="anonymous"></script>
@@ -9,11 +8,10 @@
 <script type="text/javascript">  
 microsoftTeams.initialize();
 microsoftTeams.settings.setSettings({
-         entityId: "bing",
-         contentUrl: "https://www.bing.com/",
-         suggestedDisplayName: "bing",
-         websiteUrl: "https://www.bing.com/", //where the user is taken if they click Go to website button
-         //removeUrl: "https://www.bing.com/", //optional removal page
+         entityId: "Navigator",
+         contentUrl: "https://stage.navigator.mastercard.com/",
+         suggestedDisplayName: "Navigator",
+         websiteUrl: "https://stage.navigator.mastercard.com/", //where the user is taken if they click Go to website button
 });
 microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
     saveEvent.notifySuccess();
